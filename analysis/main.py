@@ -1,6 +1,9 @@
 import sys
 import filterPhys
+import csv
 
-data = filter(sys.argv[1])
-newFile = open('./filtered', 'w+')
-newFile.write(data)
+data = filterPhys.filter(sys.argv[1])
+
+with open("output.csv", "w") as f:
+	writer = csv.writer(f)
+	writer.writerows(data)
