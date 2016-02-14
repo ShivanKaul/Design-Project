@@ -1,11 +1,14 @@
 import sys
 
 def filterOM(lines):
+	started = False
+	resting = False
 	data = []
 	cell = []
 	for line in lines:
 		splut = line.split(" ")
 		if 'H:' in line:
+			started = True
 			H = splut[1]
 			T = splut[3]
 			cell.append(T)
@@ -15,11 +18,14 @@ def filterOM(lines):
 			cell.append(B)
 			data.append(cell)
 			cell = []
+		elif started and not resting:
+			data.append(["Resting period over"])
+			resting = True
+
 	return data
 
 def filter(filename):
 	openFile = open(filename, 'rU')
 	allLines = openFile.read().splitlines()
 	data = filterOM(allLines)
-	print data
 	return data
