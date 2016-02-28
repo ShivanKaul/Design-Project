@@ -4,7 +4,7 @@ import csv
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
-class frankenstein:
+class frankenstein:   # file used to convert the csv files to give heart rate, skin and time
 
 	hear = []
 	sk = []
