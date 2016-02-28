@@ -1,22 +1,31 @@
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 
+from frankenstein import *
 from base import *
 from compare import *
 
-infile = open("C:\Users\wearable\Trevor.txt", "r")
+infile = open("C:\Users\wearable\Documents\it.csv", "r")
 #infile2 = open("C:\Users\wearable\IT.txt", "r")
-oxy = []
+#oxy = []
 oxy_1 = []
-test1 = base(infile)
-test1.clear()
-oxy = test1.start()
-oxy_1 = test1.filter(0.15, 150.0, 1000.0, 0.0)
-test2 = compare(oxy, oxy_1, 14)
-test2.xavier()
-test2.clear()
-
-plt.plot(oxy, 'r')
-plt.plot(oxy_1, 'b')
+hea =[]
+sk = []
+time =[]
+test1 = frankenstein(infile)
+#oxy = test1.verne()
+test1.verne()
+hea = test1.heart()
+sk = test1.skin()
+time = test1.time()
+oxy_1 = test1.filter(sk, q=0.01, r=400000.0, p=5000.0, k=0.0)
+oxy_2 = test1.filter(hea, q=0.15, r=150.0, p=1000.0, k=0.0)
+# test2 = compare(oxy, oxy_1, 14)
+# test2.xavier()
+# test2.clear()
+print hea
+plt.plot(hea, 'r')
+plt.plot(oxy_2, 'b')
 plt.show()
