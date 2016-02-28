@@ -4,7 +4,7 @@ import os
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
-class convert_csv:   # file used to convert the csv files to give heart rate, skin and time
+class Converter:   # file used to convert the csv files to give heart rate, skin and time
 
 	hear = []
 	sk = []
@@ -13,6 +13,7 @@ class convert_csv:   # file used to convert the csv files to give heart rate, sk
 	def __init__(self, infile, tag):
 		self.infile = infile
 		self.tag = tag
+		self.clear
 
 	def generate (self):
 		line = csv.reader(self.infile)
@@ -21,6 +22,7 @@ class convert_csv:   # file used to convert the csv files to give heart rate, sk
 		i = 0
 		j = 0 
 		while i < len(data):
+
 			if(data[i][2] != ''):
 				if (self.tag == 'fear'):
 					x.append(data[i] + ['fear'])
