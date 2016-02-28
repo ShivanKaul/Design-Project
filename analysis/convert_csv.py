@@ -60,6 +60,6 @@ class convert_csv:   # file used to convert the csv files to give heart rate, sk
 		return filtered	
 
 	def clear (self):
-		self.heart[:] = []	
-		self.skin[:] = []
-		self.time[:] = []
+		self.hear[:] = []	
+		self.sk[:] = []
+		self.tim[:] = []
