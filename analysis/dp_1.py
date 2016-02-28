@@ -29,7 +29,7 @@ for files in glob.glob("*.csv"):
 	test1 = convert_csv(infile, tag)
 	# need to do this for every file 
 	test1.clear()						
-	x = test1.generate()
+	x = test1.generate() # list of tuples 
 	hea = test1.heart()
 	sk = test1.skin()
 	time = test1.time()
