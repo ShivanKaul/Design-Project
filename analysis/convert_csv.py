@@ -14,7 +14,7 @@ class convert_csv:   # file used to convert the csv files to give heart rate, sk
 		self.infile = infile
 		self.tag = tag
 
-	def verne (self):
+	def generate (self):
 		line = csv.reader(self.infile)
 		data = tuple(line)
 		x = []
