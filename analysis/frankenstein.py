@@ -22,9 +22,9 @@ class frankenstein:   # file used to convert the csv files to give heart rate, s
 		j = 0 
 		while i < len(data):
 			if(data[i][2] != ''):
-				if self.tag == 'fear':
+				if (self.tag == 'fear'):
 					x.append(data[i] + ['fear'])
-				elif self.tag == 'happy':
+				elif (self.tag == 'happy'):
 					x.append(data[i] + ['happy'])
 				else:
 					x.append(data[i] + ['physical'])		

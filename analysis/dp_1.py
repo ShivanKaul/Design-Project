@@ -7,7 +7,7 @@ from frankenstein import *
 from base import *
 from compare import *
 
-infile = open("C:/Users\wearable/Documents/Design-Project/analysis/happy_kungfu.csv", "r")
+infile = open("C:/Users/wearable/Documents/Design-Project/analysis/fear_chucky.csv", "r")
 if 'fear' in os.path.basename(infile.name):
 	tag = 'fear'
 elif 'happy' in os.path.basename(infile.name):
