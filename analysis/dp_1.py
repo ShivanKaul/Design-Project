@@ -2,21 +2,29 @@ import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
-
+import os 
 from frankenstein import *
 from base import *
 from compare import *
 
-infile = open("C:\Users\wearable\Documents\emily.csv", "r")
+infile = open("C:/Users\wearable/Documents/Design-Project/analysis/happy_kungfu.csv", "r")
+if 'fear' in os.path.basename(infile.name):
+	tag = 'fear'
+elif 'happy' in os.path.basename(infile.name):
+	tag = 'happy'
+else:
+	tag = 'physical'
+
 #infile2 = open("C:\Users\wearable\IT.txt", "r")
 #oxy = []
 oxy_1 = []
 hea =[]
 sk = []
 time =[]
-test1 = frankenstein(infile)
+x = []
+test1 = frankenstein(infile, tag)
 #oxy = test1.verne()
-test1.verne()
+x = test1.verne()
 hea = test1.heart()
 sk = test1.skin()
 time = test1.time()

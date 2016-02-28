@@ -1,6 +1,6 @@
 import math
 import csv 
-
+import os
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,8 +10,9 @@ class frankenstein:   # file used to convert the csv files to give heart rate, s
 	sk = []
 	tim = []
 
-	def __init__(self, infile):
+	def __init__(self, infile, tag):
 		self.infile = infile
+		self.tag = tag
 
 	def verne (self):
 		line = csv.reader(self.infile)
@@ -21,14 +22,20 @@ class frankenstein:   # file used to convert the csv files to give heart rate, s
 		j = 0 
 		while i < len(data):
 			if(data[i][2] != ''):
-				x.append(data[i])
+				if self.tag == 'fear':
+					x.append(data[i] + ['fear'])
+				elif self.tag == 'happy':
+					x.append(data[i] + ['happy'])
+				else:
+					x.append(data[i] + ['physical'])		
 			i = i+1
 		
 		while j < len(x):
 			self.hear.append(float(x[j][2]))
 			self.sk.append(float(x[j][1]))
 			self.tim.append(float(x[j][0]))
-			j = j+1		
+			j = j+1
+		return 	x		
 
 	def heart(self):
 		return self.hear
