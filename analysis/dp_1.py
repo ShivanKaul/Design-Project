@@ -9,6 +9,7 @@ import glob
 from convert_csv import *
 from base import *
 from compare import *
+from value import *
 
 for files in glob.glob("*.csv"):
 	infile = open(files, "r")
