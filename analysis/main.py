@@ -23,7 +23,7 @@ def plot(skin, filtered_skin, heart, filtered_heart):
 
 # Start main script
 for file in glob.glob("*.csv"):
-    # for file in glob.glob("happy_kungfu2.csv"):
+# for file in glob.glob("happy_Trevor.csv"):
     if file == "listOfTuples.csv":
         continue
     infile = open(file, "r")
@@ -45,7 +45,7 @@ for file in glob.glob("*.csv"):
     # Plot
     # plot(converter.skin, converter.filtered_skin, converter.heart, converter.filtered_heart)
 
-    # Print to file
+# Print to file
 with open("listOfTuples.csv", "w") as f:
     writer = csv.writer(f)
     writer.writerows(listOfTuples)
