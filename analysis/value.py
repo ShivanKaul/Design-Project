@@ -3,6 +3,7 @@ from scipy.interpolate import InterpolatedUnivariateSpline as pi
 def intervalues (mylistx, mylisty, mylistom):
 	i = 1.0 
 	a = []
+	print len(mylistom)
 	while i < len(mylistom):
 		a.append(i)
 		i = i+1.0

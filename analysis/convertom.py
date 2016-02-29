@@ -17,20 +17,21 @@ class Convertom:
 
         file = csv.reader(self.infile, delimiter='\n')
         for row in file:
+            # print row
             # A row as converted by csv.reader is actually a single item
             # list of string
             # We need to get the item and split it on the comma
             row = row[0].split(',')
-            if(row[1] != 'nan'):
+            if(str(row[1]) != 'nan'):
                 row = map(float, row)
                 self.heart.append(row[1])
                 self.breath.append(row[2])
                 self.time.append(row[0])
             elif (not row[0]):
-                print 'Found baseline!'
+                # print 'Found baseline!'
                 baseline_index = len(self.time)
-                print baseline_index 
-            else:
+                # 2print baseline_index 
+            elif(str(row[1]) == 'nan'):
                 self.heart.append(0.0)
                 self.breath.append(float(row[2])) 
                 self.time.append(float(row[0]))                  

@@ -1,7 +1,7 @@
 import sys
 
 def filterOM(lines):
-	print lines
+	# print lines
 	started = False
 	resting = False
 	data = []
@@ -20,7 +20,7 @@ def filterOM(lines):
 			data.append(cell)
 			cell = []
 		elif started and not resting:
-			data.append([" "])
+			data.append([",,"])
 			resting = True
 
 	return data

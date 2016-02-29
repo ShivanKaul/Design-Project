@@ -7,6 +7,6 @@ def call_filter(filename):
 	data = filter.filter(filename)
 
 	# Write to output.csv
-	with open(filename + ".csv", "w") as f:
+	with open(filename + '.csv', "w") as f:
 		writer = csv.writer(f)
 		writer.writerows(data)
