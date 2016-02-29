@@ -43,10 +43,9 @@ for file in glob.glob("*.csv"):
     listOfTuples.append(converter.generate())
 
     # Plot
-    plot(converter.skin, converter.filtered_skin,
-         converter.heart, converter.filtered_heart)
+    # plot(converter.skin, converter.filtered_skin, converter.heart, converter.filtered_heart)
 
     # Print to file
-    with open("listOfTuples.csv", "w") as f:
-        writer = csv.writer(f)
-        writer.writerows(listOfTuples)
+with open("listOfTuples.csv", "w") as f:
+    writer = csv.writer(f)
+    writer.writerows(listOfTuples)
