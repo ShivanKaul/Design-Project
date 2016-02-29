@@ -30,9 +30,9 @@ class Converter:
                 self.skin.append(row[1])
                 self.time.append(row[0])
             elif (not row[0]):
-                print 'Found baseline!'
+                # print 'Found baseline!'
                 baseline_index = len(self.time)
-                print baseline_index
+                # print baseline_index
 
         # Filter
         self.filtered_skin = self.filter(self.skin,

@@ -16,7 +16,7 @@ from convertom import *
 from write_to_file import *
 from value import *
 
-for files in glob.glob("fear_it.csv"):
+for files in glob.glob("*.csv"):
 	infile = open(files, "r")
 
 	if 'fear' in os.path.basename(infile.name):
@@ -33,7 +33,6 @@ for files in glob.glob("fear_it.csv"):
 	cnvom = Convertom(infileOM)
 	x = cnvom.generate()
 
-	print "got here"
 	heartom = cnvom.heart
 	breath = cnvom.breath
 	timeom = cnvom.time
@@ -41,10 +40,13 @@ for files in glob.glob("fear_it.csv"):
 	converter = Converter(infile, tag)
 	y = converter.generate()
 	heart = converter.filtered_heart
+	skin = converter.filtered_skin 
 	time = converter.time
 
 	heartsync = intervalues(time, heart, timeom)
-	print heartsync
+	skinsync = intervalues(time, skin, timeom)
+	merged = zip(timeom, heartsync, heartom, breath, skinsync, [tag]*len(heartsync))
+	print merged
 	# # initiate all lists
 	# oxy_1 = []
 	# hea =[]
