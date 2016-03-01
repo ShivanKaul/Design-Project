@@ -12,10 +12,7 @@ from write_to_file import *
 from value import *
 
 for files in glob.glob("*.csv"):
-	# if files == e or d:
-	# 	continue
 	infile = open(files, "r")
-	print files
 	
 	# Assign tags
 	if 'fear' in os.path.basename(infile.name):
