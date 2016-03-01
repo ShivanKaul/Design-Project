@@ -22,15 +22,15 @@ class Convertom:
             # list of string
             # We need to get the item and split it on the comma
             row = row[0].split(',')
-            if(str(row[1]) != 'nan'):
+            if(not row[0]):
+                baseline_index = len(self.time)
+
+            elif (str(row[1]) != 'nan'):
                 row = map(float, row)
                 self.heart.append(row[1])
                 self.breath.append(row[2])
                 self.time.append(row[0])
-            elif (not row[0]):
-                # print 'Found baseline!'
-                baseline_index = len(self.time)
-                # 2print baseline_index 
+
             elif(str(row[1]) == 'nan'):
                 self.heart.append(0.0)
                 self.breath.append(float(row[2])) 

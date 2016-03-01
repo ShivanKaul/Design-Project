@@ -33,9 +33,21 @@ for file in glob.glob("*.csv"):
     if 'fear' in os.path.basename(infile.name):
         tag = 'fear'
     elif 'happy' in os.path.basename(infile.name):
-        tag = 'happy'
+        tag = 'happy' 
+    elif 'sadness' in os.path.basename(infile.name):
+        tag = 'sadness'
+    elif 'tenderness' in os.path.basename(infile.name): 
+        tag = 'tenderness'
+    elif 'anger' in os.path.basename(infile.name):
+        tag = 'anger'
+    elif 'physical+tenderness' in os.path.basename(infile.name):
+        tag = 'physcal+tenderness'
+    elif 'physical+happy' in os.path.basename(infile.name):
+        tag = 'physical+happy'
+    elif 'physical+fear' in os.path.basename(infile.name):
+        tag = 'physical+fear'
     else:
-        tag = 'physical'
+        tag = 'physical'           
 
     # Convert
     converter = Converter(infile, tag)

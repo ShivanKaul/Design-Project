@@ -6,30 +6,43 @@ import os
 import glob
 import sys
 
-# importing class 
-#from convert_csv import *
-#from base import *
-# from compare import *
-# from value import *
 from converter import *
 from convertom import *
 from write_to_file import *
 from value import *
 
 for files in glob.glob("*.csv"):
+	# if files == e or d:
+	# 	continue
 	infile = open(files, "r")
-
+	print files
+	
+	# Assign tags
 	if 'fear' in os.path.basename(infile.name):
 		tag = 'fear'
 	elif 'happy' in os.path.basename(infile.name):
-		tag = 'happy'
+		tag = 'happy' 
+	elif 'sadness' in os.path.basename(infile.name):
+		tag = 'sadness'
+	elif 'tenderness' in os.path.basename(infile.name): 
+		tag = 'tenderness'
+	elif 'anger' in os.path.basename(infile.name):
+		tag = 'anger'
+	elif 'physical+tenderness' in os.path.basename(infile.name):
+		tag = 'physcal+tenderness'
+	elif 'physical+happy' in os.path.basename(infile.name):
+		tag = 'physical+happy'
+	elif 'physical+fear' in os.path.basename(infile.name):
+		tag = 'physical+fear'
 	else:
-		tag = 'physical'
+		tag = 'physical'  
+
 	a = os.path.basename(infile.name)
+
 	omf = 'OM_' + os.path.splitext(a)[0] + '.txt'
 	call_filter(omf)
 
-	infileOM = open(omf + '.csv', "r")
+	infileOM = open(os.path.join(os.path.expanduser('~'),'Documents/Design-Project/analysis/OM','OM_' + a), "r")
 	cnvom = Convertom(infileOM)
 	x = cnvom.generate()
 
@@ -46,32 +59,12 @@ for files in glob.glob("*.csv"):
 	heartsync = intervalues(time, heart, timeom)
 	skinsync = intervalues(time, skin, timeom)
 	merged = zip(timeom, heartsync, heartom, breath, skinsync, [tag]*len(heartsync))
-	print merged
-	# # initiate all lists
-	# oxy_1 = []
-	# hea =[]
-	# sk = []
-	# time =[]
-	# x = []
-	# # call for conversion 
-	# test1 = convert_csv(infile, tag)
-	# # need to do this for every file 
-	# test1.clear()						
-	# x = test1.generate() # list of tuples 
-	# hea = test1.heart()
-	# sk = test1.skin()
-	# time = test1.time()
-	# # filter 
-	# oxy_1 = test1.filter(sk, q=590.0, r=50000.0, p=399900.0, k=0.0) 
-	# oxy_2 = test1.filter(hea, q=0.99, r=260.0, p=1000.0, k=0.0)
-	# #print the plot
-	# plt.figure(1)
-	# plt.subplot(211)
-	# plt.plot(sk, 'r')
-	# plt.plot(oxy_1, 'b')
 
-	# plt.subplot(212)
-	# plt.plot(hea, 'r')
-	# plt.plot(oxy_2, 'b')
+	b = os.path.basename(infile.name)
+	c = os.path.splitext(b)[0] + '_merged'
 
-	# plt.show()
+	with open(os.path.join(os.path.expanduser('~'),'Documents/Design-Project/analysis/Merged',c + '.csv'), "w") as f:
+		writer = csv.writer(f)
+		writer.writerows(merged)
+
+	
