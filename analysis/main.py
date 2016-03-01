@@ -14,13 +14,21 @@ from learn import learn_with_test
 def get_tag(infile, binary=True):
     # Assign tags: multiclass or binary
     if binary:
-        if 'physical' in os.path.basename(infile.name):
+        if 'physical+tenderness' in os.path.basename(infile.name):
+            tag = 'physcal+tenderness'
+        elif 'physical+happy' in os.path.basename(infile.name):
+            tag = 'physical+happy'
+        elif 'physical+fear' in os.path.basename(infile.name):
+            tag = 'physical+fear'
+        elif 'physical' in os.path.basename(infile.name):
             tag = 'physical'
         else:
             tag = 'emotion'
     else:
         if 'fear' in os.path.basename(infile.name):
             tag = 'fear'
+        if 'disgust' in os.path.basename(infile.name):
+            tag = 'disgust'
         elif 'happy' in os.path.basename(infile.name):
             tag = 'happy'
         elif 'sadness' in os.path.basename(infile.name):
@@ -58,9 +66,12 @@ def plot(skin, filtered_skin, heart, filtered_heart):
     plt.show()
 
 
-def main(matcher):
+def main(matcher, combined=False):
     listOfTuples = []
     for file in glob.glob(matcher):
+        if not combined:
+            if "physical+" in file:
+                continue
     # for file in glob.glob("happy_Trevor.csv"):
         if file == "listOfTuples.csv" or file == "output.csv":
             continue
@@ -77,9 +88,9 @@ def main(matcher):
 
     # printToFile("listOfTuples.csv", listOfTuples)
 
-test = main("test/fear_copycat.csv")
-# learn(main("*.csv"))
-learn_with_test(main("*.csv"), test)
+# test = main("test/physical_pushups2.csv")
+learn(main("ProComp_CSV/*.csv"))
+# learn_with_test(main("ProComp_CSV/*.csv"), test)
 
     # Plot
     # plot(converter.skin, converter.filtered_skin, converter.heart, converter.filtered_heart)
